@@ -31,7 +31,7 @@ function Cadastro() {
         }
         else {
 
-            axios.post('localhost:5001/cadastro', body)
+            axios.post('https://git.heroku.com/project-myuniverse.git/cadastro', body)
                 .then(res => {
                     console.log(res.data)
                 })
