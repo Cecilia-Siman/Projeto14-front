@@ -1,7 +1,8 @@
-import { Container, Cabecalho, Voltar } from "./Cadastro-style";
+import { Container, Cabecalho } from "./Cadastro-style";
 import { Input } from '../Input/Input.js'
 import { useState } from "react";
-import { IoReturnDownBack } from 'react-icons/io5';
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 
 function Cadastro() {
@@ -11,21 +12,32 @@ function Cadastro() {
     const [senha, setSenha] = useState('')
     const [confmacao, setConfirmacao] = useState('')
 
+    let navigate = useNavigate();
+
     function SignUp(event) {
         event.preventDefault();
 
         const senhasDiferentes = senha !== confmacao
         const senhaPequena = senha.length < 6
 
+        const body = {
+            nome,
+            email,
+            senha
+        }
+
         if (senhasDiferentes || senhaPequena) {
             alert('Preencha os dados corretamente!!')
         }
         else {
-            const body = {
-                nome,
-                email,
-                senha
-            }
+
+            axios.post('localhost:5001/cadastro', body)
+                .then(res => {
+                    console.log(res.data)
+                })
+                .catch(err => {
+                    alert(err)
+                })
 
             console.log(body)
         }
@@ -34,9 +46,6 @@ function Cadastro() {
 
     return (
         <Container>
-            <Voltar>
-                <IoReturnDownBack color="black" size={30} cursor='pointer' />
-            </Voltar>
             <Cabecalho>
                 <h1>My Universe</h1>
             </Cabecalho>
@@ -47,6 +56,7 @@ function Cadastro() {
                 <Input placeholder="Confirmar senha" type='password' onChange={(e) => { setConfirmacao(e.target.value) }} value={confmacao} />
                 <button>Cadastrar</button>
             </form>
+            <h2 onClick={() => navigate('/')}>Já sou cadastrado!!</h2>
             <img src='https://t.ctcdn.com.br/ZqnG6CaMD_Hpfhlt2wheJRhqvRw=/512x288/smart/filters:format(webp)/i575834.png' alt="" />
 
         </Container>

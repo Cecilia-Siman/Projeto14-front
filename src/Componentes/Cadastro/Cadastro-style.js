@@ -34,6 +34,17 @@ img {
     opacity: .3;
     object-fit: cover;
 }
+h2 {
+        width: 100%;
+        text-align: center;
+        color:#FFFFFF;
+        z-index: 1;
+        cursor: pointer;
+    }
+
+h2:hover{
+    text-decoration: underline;
+}
 `
 
 export const Cabecalho = styled.div`
@@ -48,16 +59,4 @@ h1{
     font-family: 'Orbitron', sans-serif;
     font-weight: 500;
 }
-`
-
-export const Voltar = styled.div`
-width: 30px;
-height: 30px;
-position: fixed;
-top: 20px;
-left: 20px;
-cursor: pointer;
-background-color: #6495ed;
-border-radius: 5px;
-z-index: 1;
 `
