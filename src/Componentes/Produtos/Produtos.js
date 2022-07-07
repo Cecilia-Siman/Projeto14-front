@@ -121,10 +121,14 @@ function Produtos() {
     return (
         <Container>
             <Cabecalho>
-                <FaUserCircle size={30} />
+                <h1>My Universe</h1>
+                <FaUserCircle size={30} cursor='pointer' />
             </Cabecalho>
             <Menu>
-
+                <p>Estrelas</p>
+                <p>Planetas</p>
+                <p>Buracos negros</p>
+                <p>Luas</p>
             </Menu>
             <Estante>
                 {galaxias.map((item, index) => <AdicionaGalaxia key={index} item={item} />)}

@@ -5,33 +5,58 @@ width: 100%;
 display: flex;
 flex-direction: column;
 position: absolute;
-padding: 0 0 0 20px;
+padding: 0 20px 0 20px;
 box-sizing: border-box;
 `
 
 export const Cabecalho = styled.div`
 width: 100%;
 height: 60px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0 10px;
+border-bottom: solid 1px black;
 position: fixed;
 top: 0;
 left: 0;
 background-color: white;
 z-index: 1;
+box-sizing: border-box;
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 500;
+}
 `
 
 export const Menu = styled.div`
-height: 60px;
+height: 40px;
 width: 100%;
-margin-top: 60px;
-position: fixed;
-top: 0;
+display: flex;
+align-items: center;
+margin-top: 70px;
+position: absolute;
 left: 0;
-background-color: white;
-z-index: 1;
+border-top: solid  1px #6495ed;
+border-bottom: solid  1px #6495ed;
+
+p:last-child{
+    border-right: 0;
+}
+
+p {
+    color: #6495ed;
+    margin-left: 10px;
+    padding-right: 10px;
+    border-right: solid 1px #6495ed;
+    text-align: center;
+    cursor: pointer;
+}
 `
 
 export const Estante = styled.div`
-margin-top: 130px;
+margin-top: 120px;
 `
 
 export const Galaxia = styled.div`
