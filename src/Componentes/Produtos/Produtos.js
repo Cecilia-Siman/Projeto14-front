@@ -1,4 +1,7 @@
-import { Container, Cabecalho, Menu, Estante, Galaxia, Painel, Estoque, Produto, Foto, Informacoes } from "./Produtos-style";
+import { Container, Cabecalho, Menu, Estante, Galaxia, Painel, Estoque, Produto, Foto, Informacoes, Icones } from "./Produtos-style";
+import { FiShoppingCart } from 'react-icons/fi'
+import { AiFillHeart } from 'react-icons/ai'
+import { FaUserCircle } from 'react-icons/fa'
 
 function AdicionaGalaxia({ item }) {
 
@@ -16,6 +19,14 @@ function AdicionaGalaxia({ item }) {
                     <p>R$ {produto.preco}</p>
                     <p>Descrição: {produto.descricao}</p>
                 </Informacoes>
+                <Icones>
+                    <div>
+                        <FiShoppingCart size={20} color="grey" cursor='pointer' />
+                    </div>
+                    <div>
+                        <AiFillHeart size={20} color="red" cursor='pointer' />
+                    </div>
+                </Icones>
             </Produto>
         )
     }
@@ -110,7 +121,7 @@ function Produtos() {
     return (
         <Container>
             <Cabecalho>
-                ads
+                <FaUserCircle size={30} />
             </Cabecalho>
             <Menu>
 
