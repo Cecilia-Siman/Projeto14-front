@@ -56,7 +56,7 @@ function Cadastro() {
                 <Input placeholder="Confirmar senha" type='password' onChange={(e) => { setConfirmacao(e.target.value) }} value={confmacao} />
                 <button>Cadastrar</button>
             </form>
-            <h2 onClick={() => navigate('/')}>Já sou cadastrado!!</h2>
+            <h2 onClick={() => navigate('/login')}>Já sou cadastrado!!</h2>
             <img src='https://t.ctcdn.com.br/ZqnG6CaMD_Hpfhlt2wheJRhqvRw=/512x288/smart/filters:format(webp)/i575834.png' alt="" />
 
         </Container>
