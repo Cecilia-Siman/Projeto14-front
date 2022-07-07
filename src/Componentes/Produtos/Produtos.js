@@ -8,10 +8,11 @@ function AdicionaGalaxia({ item, categoria, setCategoria }) {
 
     const produtos = item.estoque
 
-    let newprod = produtos.filter(item => {
+    let produtosFiltrados = produtos.filter(item => {
         if (item.tipo === categoria || categoria === '') {
             return item
         }
+        else { return false }
     })
 
     function AdicionaProduto({ produto }) {
@@ -38,21 +39,27 @@ function AdicionaGalaxia({ item, categoria, setCategoria }) {
         )
     }
 
-    return (
-        <Galaxia>
-            <h1>{item.nome}</h1>
-            <Painel>
-                <Estoque>
-                    {newprod.map((item, index) => <AdicionaProduto key={index} produto={item} />)}
-                </Estoque>
-            </Painel>
-        </Galaxia>
-    )
+    if (produtosFiltrados.length !== 0) {
+        return (
+            <Galaxia>
+                <h1>{item.nome}</h1>
+                <Painel>
+                    <Estoque>
+                        {produtosFiltrados.map((item, index) => <AdicionaProduto key={index} produto={item} />)}
+                    </Estoque>
+                </Painel>
+            </Galaxia>
+        )
+    }
+    else {
+        return ''
+    }
 }
 
 function Produtos() {
 
     const [categoria, setCategoria] = useState('')
+    // const [galaxias, setGalaxias] = useState([])
 
     const galaxias = [
         {
@@ -85,6 +92,13 @@ function Produtos() {
                     tipo: 'Planeta',
                     preco: '15000',
                     descricao: 'Parece um smurf'
+                },
+                {
+                    imagem: 'https://s2.glbimg.com/59Q0Xu-HkCRrY0OFBdDi_prC5Ko=/525x0:2351x1800/1008x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2022/f/y/Tm9nhGTnucvVYqPLQz3A/bildschirmfoto-2022-04-12-um-10.50.41.png',
+                    nome: 'SOl',
+                    tipo: 'Estrela',
+                    preco: '15000',
+                    descricao: 'brilha'
                 }
             ]
         },
@@ -109,6 +123,13 @@ function Produtos() {
                     tipo: 'Estrela',
                     preco: '15000',
                     descricao: 'brilha'
+                },
+                {
+                    imagem: 'https://s2.glbimg.com/59Q0Xu-HkCRrY0OFBdDi_prC5Ko=/525x0:2351x1800/1008x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2022/f/y/Tm9nhGTnucvVYqPLQz3A/bildschirmfoto-2022-04-12-um-10.50.41.png',
+                    nome: 'Messier 31',
+                    tipo: 'Buraco negro',
+                    preco: '15000',
+                    descricao: 'Só 2,4 milhoes de anos-luz da terra'
                 }
             ]
         },
@@ -128,10 +149,18 @@ function Produtos() {
     ]
 
     // useEffect(() => {
-    //     config = {
 
-    //     }
-    // }) 
+    //     const promise = axios.get('https://git.heroku.com/project-myuniverse.git/produtos', {
+    //         headers: {
+    //             "Authorization": `Bearer ${token}`
+    //         }
+    //     })
+
+    //     promise.then(res => {
+    //         setGalaxias(res.data)
+    //     }).catch(err => console.log(err))
+    // }, [])
+
 
     return (
         <Container>

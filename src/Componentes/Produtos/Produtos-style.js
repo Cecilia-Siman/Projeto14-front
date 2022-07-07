@@ -101,6 +101,7 @@ padding: 20px 10px 0 10px;
 background-color: white;
 box-sizing: border-box;
 border-radius: 5px;
+position: relative;
 `
 
 export const Foto = styled.div`
@@ -125,11 +126,13 @@ p {
 `
 
 export const Icones = styled.div`
+position: absolute;
 display: flex;
 justify-content: end;
-margin-top: 20px;
+right: 10px;
+bottom:10px;
 
 div {
-    margin:0 10px;
+    margin:0 5px;
 }
 `
