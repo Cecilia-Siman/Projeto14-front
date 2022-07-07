@@ -34,8 +34,9 @@ export const Menu = styled.div`
 height: 40px;
 width: 100%;
 display: flex;
+justify-content: center;
 align-items: center;
-margin-top: 70px;
+margin-top: 80px;
 position: absolute;
 left: 0;
 border-top: solid  1px #6495ed;
@@ -56,7 +57,7 @@ p {
 `
 
 export const Estante = styled.div`
-margin-top: 120px;
+margin-top: 140px;
 `
 
 export const Galaxia = styled.div`

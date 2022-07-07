@@ -2,10 +2,17 @@ import { Container, Cabecalho, Menu, Estante, Galaxia, Painel, Estoque, Produto,
 import { FiShoppingCart } from 'react-icons/fi'
 import { AiFillHeart } from 'react-icons/ai'
 import { FaUserCircle } from 'react-icons/fa'
+import { useEffect, useState } from "react";
 
-function AdicionaGalaxia({ item }) {
+function AdicionaGalaxia({ item, categoria, setCategoria }) {
 
     const produtos = item.estoque
+
+    let newprod = produtos.filter(item => {
+        if (item.tipo === categoria || categoria === '') {
+            return item
+        }
+    })
 
     function AdicionaProduto({ produto }) {
         return (
@@ -36,7 +43,7 @@ function AdicionaGalaxia({ item }) {
             <h1>{item.nome}</h1>
             <Painel>
                 <Estoque>
-                    {produtos.map((item, index) => <AdicionaProduto key={index} produto={item} />)}
+                    {newprod.map((item, index) => <AdicionaProduto key={index} produto={item} />)}
                 </Estoque>
             </Painel>
         </Galaxia>
@@ -44,6 +51,8 @@ function AdicionaGalaxia({ item }) {
 }
 
 function Produtos() {
+
+    const [categoria, setCategoria] = useState('')
 
     const galaxias = [
         {
@@ -80,7 +89,7 @@ function Produtos() {
             ]
         },
         {
-            nome: 'Via Láctea',
+            nome: 'Bode',
             estoque: [
                 {
                     imagem: 'https://s2.glbimg.com/59Q0Xu-HkCRrY0OFBdDi_prC5Ko=/525x0:2351x1800/1008x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2022/f/y/Tm9nhGTnucvVYqPLQz3A/bildschirmfoto-2022-04-12-um-10.50.41.png',
@@ -92,7 +101,7 @@ function Produtos() {
             ]
         },
         {
-            nome: 'Via Láctea',
+            nome: 'Andrômeda',
             estoque: [
                 {
                     imagem: 'https://s2.glbimg.com/59Q0Xu-HkCRrY0OFBdDi_prC5Ko=/525x0:2351x1800/1008x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2022/f/y/Tm9nhGTnucvVYqPLQz3A/bildschirmfoto-2022-04-12-um-10.50.41.png',
@@ -104,7 +113,7 @@ function Produtos() {
             ]
         },
         {
-            nome: 'Via Láctea',
+            nome: 'Triângulo',
             estoque: [
                 {
                     imagem: 'https://s2.glbimg.com/59Q0Xu-HkCRrY0OFBdDi_prC5Ko=/525x0:2351x1800/1008x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2022/f/y/Tm9nhGTnucvVYqPLQz3A/bildschirmfoto-2022-04-12-um-10.50.41.png',
@@ -118,6 +127,12 @@ function Produtos() {
 
     ]
 
+    // useEffect(() => {
+    //     config = {
+
+    //     }
+    // }) 
+
     return (
         <Container>
             <Cabecalho>
@@ -125,15 +140,15 @@ function Produtos() {
                 <FaUserCircle size={30} cursor='pointer' />
             </Cabecalho>
             <Menu>
-                <p>Estrelas</p>
-                <p>Planetas</p>
-                <p>Buracos negros</p>
-                <p>Luas</p>
+                <p onClick={() => setCategoria('Estrela')}>Estrelas</p>
+                <p onClick={() => setCategoria('Planeta')}>Planetas</p>
+                <p onClick={() => setCategoria('Buraco negro')}>Buracos negros</p>
+                <p onClick={() => setCategoria('Lua')}>Luas</p>
             </Menu>
             <Estante>
-                {galaxias.map((item, index) => <AdicionaGalaxia key={index} item={item} />)}
+                {galaxias.map((item, index) => <AdicionaGalaxia key={index} item={item} categoria={categoria} setCategoria={setCategoria} />)}
             </Estante>
-        </Container>
+        </Container >
     )
 }
 
