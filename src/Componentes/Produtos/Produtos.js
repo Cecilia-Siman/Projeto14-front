@@ -14,6 +14,9 @@ function AdicionaGalaxia({ item, categoria, setCategoria, token }) {
         if (item.tipo === categoria || categoria === '') {
             return item
         }
+        else {
+            return false
+        }
     })
 
     function AdicionaCarrinho({ produto }) {
@@ -25,9 +28,9 @@ function AdicionaGalaxia({ item, categoria, setCategoria, token }) {
         }
 
 
-        const promise = axios.post('https://project-myuniverse.herokuapp.com/carrinho', produto, config)
+        axios.post('https://project-myuniverse.herokuapp.com/carrinho', produto, config)
             .then((res) => {
-                console.log('OK')
+                console.log(res.data)
             })
             .catch(err => {
                 console.log(err)
@@ -78,7 +81,7 @@ function Produtos() {
 
     const [categoria, setCategoria] = useState('')
 
-    const { token, setToken } = useContext(TokenContext)
+    const { token } = useContext(TokenContext)
 
     const galaxias = [
         {

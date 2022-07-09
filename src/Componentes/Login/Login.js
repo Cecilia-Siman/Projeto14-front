@@ -10,7 +10,7 @@ function Login() {
 
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
-    const { token, setToken } = useContext(TokenContext)
+    const { setToken } = useContext(TokenContext)
 
     let navigate = useNavigate();
 
