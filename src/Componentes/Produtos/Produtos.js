@@ -25,7 +25,7 @@ function AdicionaGalaxia({ item, categoria, setCategoria, token }) {
         }
 
 
-        const promise = axios.post('https://git.heroku.com/project-myuniverse.git/carrinho', produto, config)
+        const promise = axios.post('https://project-myuniverse.herokuapp.com/carrinho', produto, config)
             .then((res) => {
                 console.log('OK')
             })

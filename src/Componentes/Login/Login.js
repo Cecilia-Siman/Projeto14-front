@@ -22,7 +22,7 @@ function Login() {
             senha
         }
 
-        axios.post('https://git.heroku.com/project-myuniverse.git/', body)
+        axios.post('https://project-myuniverse.herokuapp.com/', body)
             .then(res => {
                 console.log(res.data);
                 setToken(res.data)
