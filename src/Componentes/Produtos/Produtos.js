@@ -3,6 +3,7 @@ import { FiShoppingCart } from 'react-icons/fi'
 import { AiFillHeart } from 'react-icons/ai'
 import { FaUserCircle } from 'react-icons/fa'
 import { useEffect, useState } from "react";
+import axios from 'axios'
 
 function AdicionaGalaxia({ item, categoria, setCategoria }) {
 
@@ -13,6 +14,16 @@ function AdicionaGalaxia({ item, categoria, setCategoria }) {
             return item
         }
     })
+
+    function AdicionaCarrinho({ produto }) {
+        const promise = axios.post('https://git.heroku.com/project-myuniverse.git/produtos', produto)
+            .then((res) => {
+                // setCarrinho(res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
     function AdicionaProduto({ produto }) {
         return (
@@ -28,7 +39,7 @@ function AdicionaGalaxia({ item, categoria, setCategoria }) {
                 </Informacoes>
                 <Icones>
                     <div>
-                        <FiShoppingCart size={20} color="grey" cursor='pointer' />
+                        <FiShoppingCart size={20} color="grey" cursor='pointer' onClick={() => AdicionaCarrinho({ produto })} />
                     </div>
                     <div>
                         <AiFillHeart size={20} color="red" cursor='pointer' />
