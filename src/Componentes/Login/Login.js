@@ -1,14 +1,16 @@
 import { Container, Cabecalho } from './Login-style.js';
 import { Input } from '../Input/Input.js'
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import TokenContext from '../../Context/TokenContext.js';
 
 
 function Login() {
 
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+    const { token, setToken } = useContext(TokenContext)
 
     let navigate = useNavigate();
 
@@ -23,12 +25,11 @@ function Login() {
         axios.post('https://git.heroku.com/project-myuniverse.git/', body)
             .then(res => {
                 console.log(res.data);
+                setToken(res.data)
             })
             .catch(err => {
                 alert(err);
             })
-
-        console.log(body);
 
     }
 

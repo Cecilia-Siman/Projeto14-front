@@ -2,9 +2,11 @@ import { Container, Cabecalho, Menu, Estante, Galaxia, Painel, Estoque, Produto,
 import { FiShoppingCart } from 'react-icons/fi'
 import { AiFillHeart } from 'react-icons/ai'
 import { FaUserCircle } from 'react-icons/fa'
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import axios from 'axios'
+import TokenContext from "../../Context/TokenContext";
 
-function AdicionaGalaxia({ item, categoria, setCategoria }) {
+function AdicionaGalaxia({ item, categoria, setCategoria, token }) {
 
     const produtos = item.estoque
 
@@ -13,6 +15,28 @@ function AdicionaGalaxia({ item, categoria, setCategoria }) {
             return item
         }
     })
+
+    function AdicionaCarrinho({ produto }) {
+
+        const config = {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        }
+
+
+        const promise = axios.post('https://git.heroku.com/project-myuniverse.git/carrinho', produto, config)
+            .then((res) => {
+                console.log('OK')
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+    function AdicionaDesejo() {
+        alert('Função indisponível por enquanto!')
+    }
 
     function AdicionaProduto({ produto }) {
         return (
@@ -28,10 +52,10 @@ function AdicionaGalaxia({ item, categoria, setCategoria }) {
                 </Informacoes>
                 <Icones>
                     <div>
-                        <FiShoppingCart size={20} color="grey" cursor='pointer' />
+                        <FiShoppingCart size={20} color="grey" cursor='pointer' onClick={() => AdicionaCarrinho({ produto })} />
                     </div>
                     <div>
-                        <AiFillHeart size={20} color="red" cursor='pointer' />
+                        <AiFillHeart size={20} color="red" cursor='pointer' onClick={AdicionaDesejo} />
                     </div>
                 </Icones>
             </Produto>
@@ -53,6 +77,8 @@ function AdicionaGalaxia({ item, categoria, setCategoria }) {
 function Produtos() {
 
     const [categoria, setCategoria] = useState('')
+
+    const { token, setToken } = useContext(TokenContext)
 
     const galaxias = [
         {
@@ -127,11 +153,23 @@ function Produtos() {
 
     ]
 
-    // useEffect(() => {
-    //     config = {
+    useEffect(() => {
+        const config = {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        }
 
-    //     }
-    // }) 
+        const promise = axios.get('https://git.heroku.com/project-myuniverse.git/produtos', config)
+            .then((res) => {
+                console.log('OK')
+            })
+            .catch(err => {
+                console.log(err)
+            })
+
+
+    }, [])
 
     return (
         <Container>
@@ -146,7 +184,7 @@ function Produtos() {
                 <p onClick={() => setCategoria('Lua')}>Luas</p>
             </Menu>
             <Estante>
-                {galaxias.map((item, index) => <AdicionaGalaxia key={index} item={item} categoria={categoria} setCategoria={setCategoria} />)}
+                {galaxias.map((item, index) => <AdicionaGalaxia key={index} item={item} categoria={categoria} setCategoria={setCategoria} token={token} />)}
             </Estante>
         </Container >
     )
