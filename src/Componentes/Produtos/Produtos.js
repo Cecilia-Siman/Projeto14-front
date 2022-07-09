@@ -16,13 +16,25 @@ function AdicionaGalaxia({ item, categoria, setCategoria }) {
     })
 
     function AdicionaCarrinho({ produto }) {
-        const promise = axios.post('https://git.heroku.com/project-myuniverse.git/produtos', produto)
+
+        // const config = {
+        //     headers: {
+        //         "Authorization": `Bearer ${token}`
+        //     }
+        // }
+
+
+        const promise = axios.post('https://git.heroku.com/project-myuniverse.git/carrinho', produto)
             .then((res) => {
-                // setCarrinho(res.data)
+                console.log('OK')
             })
             .catch(err => {
                 console.log(err)
             })
+    }
+
+    function AdicionaDesejo() {
+        alert('Função indisponível por enquanto!')
     }
 
     function AdicionaProduto({ produto }) {
@@ -42,7 +54,7 @@ function AdicionaGalaxia({ item, categoria, setCategoria }) {
                         <FiShoppingCart size={20} color="grey" cursor='pointer' onClick={() => AdicionaCarrinho({ produto })} />
                     </div>
                     <div>
-                        <AiFillHeart size={20} color="red" cursor='pointer' />
+                        <AiFillHeart size={20} color="red" cursor='pointer' onClick={AdicionaDesejo} />
                     </div>
                 </Icones>
             </Produto>

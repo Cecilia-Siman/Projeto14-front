@@ -2,16 +2,22 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Cadastro from '../Cadastro/Cadastro.js';
 import Produtos from '../Produtos/Produtos.js';
 import Login from '../Login/Login.js';
+import TokenContext from '../../Context/TokenContext.js';
+import { useState } from 'react';
 
 function App() {
 
+    const [token, setToken] = useState('')
+
     return (
         <BrowserRouter>
-            <Routes>
-                <Route path='/' element={<Login />} />
-                <Route path='/cadastro' element={<Cadastro />} />
-                <Route path='/produtos' element={<Produtos />} />
-            </Routes>
+            <TokenContext.Provider value={{ token, setToken }}>
+                <Routes>
+                    <Route path='/' element={<Login />} />
+                    <Route path='/cadastro' element={<Cadastro />} />
+                    <Route path='/produtos' element={<Produtos />} />
+                </Routes>
+            </TokenContext.Provider>
         </BrowserRouter>
     );
 }
