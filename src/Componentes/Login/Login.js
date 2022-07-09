@@ -26,6 +26,7 @@ function Login() {
             .then(res => {
                 console.log(res.data);
                 setToken(res.data)
+                navigate('/produtos')
             })
             .catch(err => {
                 alert(err);
