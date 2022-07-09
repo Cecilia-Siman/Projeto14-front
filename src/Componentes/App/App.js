@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Cadastro from '../Cadastro/Cadastro.js';
 import Produtos from '../Produtos/Produtos.js';
 import Login from '../Login/Login.js';
-import TokenContext from '../../Context/TokenContext.js';
+import TokenContext from '../Context/TokenContext.js';
 import { useState } from 'react';
 
 function App() {

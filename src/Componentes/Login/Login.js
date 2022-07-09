@@ -3,7 +3,7 @@ import { Input } from '../Input/Input.js'
 import { useState, useContext } from "react";
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import TokenContext from '../../Context/TokenContext.js';
+import TokenContext from '../Context/TokenContext.js';
 
 
 function Login() {

@@ -4,7 +4,7 @@ import { AiFillHeart } from 'react-icons/ai'
 import { FaUserCircle } from 'react-icons/fa'
 import { useContext, useEffect, useState } from "react";
 import axios from 'axios'
-import TokenContext from "../../Context/TokenContext";
+import TokenContext from '../Context/TokenContext.js';
 
 function AdicionaGalaxia({ item, categoria, setCategoria, token }) {
 
