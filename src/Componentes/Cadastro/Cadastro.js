@@ -21,9 +21,10 @@ function Cadastro() {
         const senhaPequena = senha.length < 6
 
         const body = {
-            nome,
+            name: nome,
             email,
-            senha
+            password: senha,
+            passwordConfirm: confmacao
         }
 
         if (senhasDiferentes || senhaPequena) {
@@ -38,8 +39,6 @@ function Cadastro() {
                 .catch(err => {
                     alert(err)
                 })
-
-            console.log(body)
         }
 
     }
