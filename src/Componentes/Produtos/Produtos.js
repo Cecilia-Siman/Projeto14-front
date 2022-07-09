@@ -3,6 +3,7 @@ import { FiShoppingCart } from 'react-icons/fi'
 import { AiFillHeart } from 'react-icons/ai'
 import { FaUserCircle } from 'react-icons/fa'
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import TokenContext from '../Context/TokenContext.js';
 
@@ -82,6 +83,8 @@ function Produtos() {
     const [categoria, setCategoria] = useState('')
 
     const { token } = useContext(TokenContext)
+
+    let navigate = useNavigate()
 
     const galaxias = [
         {
@@ -178,7 +181,8 @@ function Produtos() {
         <Container>
             <Cabecalho>
                 <h1>My Universe</h1>
-                <FaUserCircle size={30} cursor='pointer' />
+                <FiShoppingCart size={30} color="grey" cursor='pointer' onClick={() => navigate('/carrinho')} />
+                {/* <FaUserCircle size={30} cursor='pointer' /> */}
             </Cabecalho>
             <Menu>
                 <p onClick={() => setCategoria('Estrela')}>Estrelas</p>
