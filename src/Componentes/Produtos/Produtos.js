@@ -34,6 +34,7 @@ function AdicionaGalaxia({ item, categoria, setCategoria, token }) {
                 console.log(res.data)
             })
             .catch(err => {
+                alert(err.data)
                 console.log(err)
             })
     }
