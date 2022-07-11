@@ -30,7 +30,10 @@ function Perfil() {
             </Botoes>
             <button onClick={() => {
                 if (comprador) { navigate('/produtos') }
-                else { navigate('/venda') }
+                else {
+                    alert('Essa função estará disponível em breve!')
+                    // navigate('/venda')
+                }
             }}>Pronto</button>
         </Container>
     )
