@@ -1,15 +1,18 @@
 import { Container, Cabecalho, Menu, Estante, Galaxia, Painel, Estoque, Produto, Foto, Informacoes, Icones } from "./Produtos-style";
-import { FiShoppingCart } from 'react-icons/fi'
-import { AiFillHeart } from 'react-icons/ai'
+import { FiShoppingCart } from 'react-icons/fi';
+import { AiFillHeart } from 'react-icons/ai';
+import { FaUserCircle } from 'react-icons/fa';
+import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import TokenContext from '../Context/TokenContext.js';
 import Loading from '../Loading/Loading.js'
 
 function AdicionaGalaxia({ item, categoria, setCategoria, token }) {
 
-    const produtos = item.estoque
+    const produtos = item.estoque;
 
     let newprod = produtos.filter(item => {
         if (item.tipo === categoria || categoria === '') {
@@ -80,6 +83,8 @@ function AdicionaGalaxia({ item, categoria, setCategoria, token }) {
 }
 
 function Produtos() {
+    
+    let navigate = useNavigate();
 
     const [categoria, setCategoria] = useState('')
     const [loading, setLoading] = useState(true);
@@ -116,9 +121,12 @@ function Produtos() {
             {loading ? <Loading /> : ''}
             <Cabecalho>
                 <h1>My Universe</h1>
-                <FiShoppingCart size={30} color="grey" cursor='pointer' onClick={() => navigate('/carrinho')} />
-                {/* <FaUserCircle size={30} cursor='pointer' /> */}
+                <div>
+                    <ion-icon name="cart" onClick={() => navigate('/carrinho')}></ion-icon>
+                    <ion-icon name="exit"></ion-icon>
+                </div>
             </Cabecalho>
+
             <Menu>
                 <p onClick={() => setCategoria('Estrela')}>Estrelas</p>
                 <p onClick={() => setCategoria('Planeta')}>Planetas</p>
