@@ -3,8 +3,9 @@ import {Item , Container , Form ,  Cabecalho} from './Carrinho-style.js'
 import { useState } from "react";
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import TokenContext from '../Context/TokenContext.js';
 
-export default function Carrinho() {
+export default function Carrinho({token}) {
     let navigate = useNavigate();
     const [finish, setFinish] = useState(false);
     const [email,setEmail] = useState("");
@@ -16,7 +17,13 @@ export default function Carrinho() {
     let total=0;
     let listProducts;
 
-    axios.get('https://git.heroku.com/project-myuniverse.git/carrinho')
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    }
+
+    axios.get('https://git.heroku.com/project-myuniverse.com/carrinho',config)
         .then(res => {
             listProducts = res.data;
         })
