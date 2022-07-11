@@ -16,13 +16,13 @@ export default function Carrinho() {
     let total=0;
     let listProducts;
 
-    /*axios.get('https://git.heroku.com/project-myuniverse.git/carrinho')
+    axios.get('https://git.heroku.com/project-myuniverse.git/carrinho')
         .then(res => {
             listProducts = res.data;
         })
         .catch(err => {
             alert(err);
-        })*/
+        })
 
     function DisplayItems(item){
         total += Number(item.preco);
@@ -40,7 +40,7 @@ export default function Carrinho() {
     }
 
     function ListItems(){
-        const listProducts = [{
+        /*const listProducts = [{
             imagem: 'https://static.mundoeducacao.uol.com.br/mundoeducacao/conteudo_legenda/8465a67d00eda6b73b4485921e5fac7a.jpg',
             nome: 'Marte',
             tipo: 'Planeta',
@@ -60,7 +60,7 @@ export default function Carrinho() {
             tipo: 'Planeta',
             preco: '75000',
             descricao: 'Anéis de compromisso'
-        }];
+        }];*/
         const listReturn = listProducts.map(DisplayItems);
         return listReturn;
     }
