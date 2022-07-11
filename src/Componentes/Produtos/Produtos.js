@@ -68,7 +68,7 @@ function AdicionaGalaxia({ item, categoria, setCategoria, token }) {
 
     return (
         <Galaxia>
-            <h1>{item.nome}</h1>
+            <h1>{item.galaxia}</h1>
             <Painel>
                 <Estoque>
                     {newprod.map((item, index) => <AdicionaProduto key={index} produto={item} />)}
