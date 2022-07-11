@@ -2,8 +2,6 @@ import { Container, Cabecalho, Menu, Estante, Galaxia, Painel, Estoque, Produto,
 import { FiShoppingCart } from 'react-icons/fi';
 import { AiFillHeart } from 'react-icons/ai';
 import { FaUserCircle } from 'react-icons/fa';
-import { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -91,8 +89,6 @@ function Produtos() {
     const [galaxias, setGalaxias] = useState([])
 
     const { token } = useContext(TokenContext)
-
-    let navigate = useNavigate()
 
     useEffect(() => {
         // const config = {
