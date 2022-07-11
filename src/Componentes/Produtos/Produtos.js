@@ -81,94 +81,95 @@ function AdicionaGalaxia({ item, categoria, setCategoria, token }) {
 function Produtos() {
 
     const [categoria, setCategoria] = useState('')
+    const [galaxias, setGalaxias] = useState([])
 
     const { token } = useContext(TokenContext)
 
     let navigate = useNavigate()
 
-    const galaxias = [
-        {
-            nome: 'Via Láctea',
-            estoque: [
-                {
-                    imagem: 'https://static.mundoeducacao.uol.com.br/mundoeducacao/conteudo_legenda/8465a67d00eda6b73b4485921e5fac7a.jpg',
-                    nome: 'Marte',
-                    tipo: 'Planeta',
-                    preco: '15000',
-                    descricao: 'Elon Musk ama'
-                },
-                {
-                    imagem: 'https://s2.glbimg.com/zx5dlKpOcTOKZ6s4j6_3HNfm9fE=/e.glbimg.com/og/ed/f/original/2019/05/23/astronomy-discovery-earth-2422.jpg',
-                    nome: 'Terra',
-                    tipo: 'Planeta',
-                    preco: '300000',
-                    descricao: 'Vida inclusa'
-                },
-                {
-                    imagem: 'https://super.abril.com.br/wp-content/uploads/2019/09/saturno.png',
-                    nome: 'Saturno',
-                    tipo: 'Planeta',
-                    preco: '75000',
-                    descricao: 'Anéis de compromisso'
-                },
-                {
-                    imagem: 'https://www.revistaplaneta.com.br/wp-content/uploads/sites/3/2019/08/netuno.jpg',
-                    nome: 'Netuno',
-                    tipo: 'Planeta',
-                    preco: '15000',
-                    descricao: 'Parece um smurf'
-                }
-            ]
-        },
-        {
-            nome: 'Bode',
-            estoque: [
-                {
-                    imagem: 'https://s2.glbimg.com/59Q0Xu-HkCRrY0OFBdDi_prC5Ko=/525x0:2351x1800/1008x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2022/f/y/Tm9nhGTnucvVYqPLQz3A/bildschirmfoto-2022-04-12-um-10.50.41.png',
-                    nome: 'SOl',
-                    tipo: 'Estrela',
-                    preco: '15000',
-                    descricao: 'brilha'
-                }
-            ]
-        },
-        {
-            nome: 'Andrômeda',
-            estoque: [
-                {
-                    imagem: 'https://s2.glbimg.com/59Q0Xu-HkCRrY0OFBdDi_prC5Ko=/525x0:2351x1800/1008x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2022/f/y/Tm9nhGTnucvVYqPLQz3A/bildschirmfoto-2022-04-12-um-10.50.41.png',
-                    nome: 'SOl',
-                    tipo: 'Estrela',
-                    preco: '15000',
-                    descricao: 'brilha'
-                }
-            ]
-        },
-        {
-            nome: 'Triângulo',
-            estoque: [
-                {
-                    imagem: 'https://s2.glbimg.com/59Q0Xu-HkCRrY0OFBdDi_prC5Ko=/525x0:2351x1800/1008x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2022/f/y/Tm9nhGTnucvVYqPLQz3A/bildschirmfoto-2022-04-12-um-10.50.41.png',
-                    nome: 'SOl',
-                    tipo: 'Estrela',
-                    preco: '15000',
-                    descricao: 'brilha'
-                }
-            ]
-        }
+    // const galaxias = [
+    //     {
+    //         nome: 'Via Láctea',
+    //         estoque: [
+    //             {
+    //                 imagem: 'https://static.mundoeducacao.uol.com.br/mundoeducacao/conteudo_legenda/8465a67d00eda6b73b4485921e5fac7a.jpg',
+    //                 nome: 'Marte',
+    //                 tipo: 'Planeta',
+    //                 preco: '15000',
+    //                 descricao: 'Elon Musk ama'
+    //             },
+    //             {
+    //                 imagem: 'https://s2.glbimg.com/zx5dlKpOcTOKZ6s4j6_3HNfm9fE=/e.glbimg.com/og/ed/f/original/2019/05/23/astronomy-discovery-earth-2422.jpg',
+    //                 nome: 'Terra',
+    //                 tipo: 'Planeta',
+    //                 preco: '300000',
+    //                 descricao: 'Vida inclusa'
+    //             },
+    //             {
+    //                 imagem: 'https://super.abril.com.br/wp-content/uploads/2019/09/saturno.png',
+    //                 nome: 'Saturno',
+    //                 tipo: 'Planeta',
+    //                 preco: '75000',
+    //                 descricao: 'Anéis de compromisso'
+    //             },
+    //             {
+    //                 imagem: 'https://www.revistaplaneta.com.br/wp-content/uploads/sites/3/2019/08/netuno.jpg',
+    //                 nome: 'Netuno',
+    //                 tipo: 'Planeta',
+    //                 preco: '15000',
+    //                 descricao: 'Parece um smurf'
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         nome: 'Bode',
+    //         estoque: [
+    //             {
+    //                 imagem: 'https://s2.glbimg.com/59Q0Xu-HkCRrY0OFBdDi_prC5Ko=/525x0:2351x1800/1008x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2022/f/y/Tm9nhGTnucvVYqPLQz3A/bildschirmfoto-2022-04-12-um-10.50.41.png',
+    //                 nome: 'SOl',
+    //                 tipo: 'Estrela',
+    //                 preco: '15000',
+    //                 descricao: 'brilha'
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         nome: 'Andrômeda',
+    //         estoque: [
+    //             {
+    //                 imagem: 'https://s2.glbimg.com/59Q0Xu-HkCRrY0OFBdDi_prC5Ko=/525x0:2351x1800/1008x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2022/f/y/Tm9nhGTnucvVYqPLQz3A/bildschirmfoto-2022-04-12-um-10.50.41.png',
+    //                 nome: 'SOl',
+    //                 tipo: 'Estrela',
+    //                 preco: '15000',
+    //                 descricao: 'brilha'
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         nome: 'Triângulo',
+    //         estoque: [
+    //             {
+    //                 imagem: 'https://s2.glbimg.com/59Q0Xu-HkCRrY0OFBdDi_prC5Ko=/525x0:2351x1800/1008x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2022/f/y/Tm9nhGTnucvVYqPLQz3A/bildschirmfoto-2022-04-12-um-10.50.41.png',
+    //                 nome: 'SOl',
+    //                 tipo: 'Estrela',
+    //                 preco: '15000',
+    //                 descricao: 'brilha'
+    //             }
+    //         ]
+    //     }
 
-    ]
+    // ]
 
     useEffect(() => {
-        const config = {
-            headers: {
-                "Authorization": `Bearer ${token}`
-            }
-        }
+        // const config = {
+        //     headers: {
+        //         "Authorization": `Bearer ${token}`
+        //     }
+        // }
 
-        const promise = axios.get('https://git.heroku.com/project-myuniverse.git/produtos', config)
+        const promise = axios.get('https://project-myuniverse.herokuapp.com/produtos')
             .then((res) => {
-                console.log('OK')
+                console.log(res.data)
             })
             .catch(err => {
                 console.log(err)
