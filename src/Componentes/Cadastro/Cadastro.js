@@ -10,20 +10,21 @@ function Cadastro() {
     const [nome, setNome] = useState('')
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
-    const [confmacao, setConfirmacao] = useState('')
+    const [confirmacao, setConfirmacao] = useState('')
 
     let navigate = useNavigate();
 
     function SignUp(event) {
         event.preventDefault();
 
-        const senhasDiferentes = senha !== confmacao
+        const senhasDiferentes = senha !== confirmacao
         const senhaPequena = senha.length < 6
 
         const body = {
-            nome,
+            name: nome,
             email,
-            senha
+            password: senha,
+            passwordConfirm: confirmacao
         }
 
         if (senhasDiferentes || senhaPequena) {
@@ -31,15 +32,13 @@ function Cadastro() {
         }
         else {
 
-            axios.post('https://git.heroku.com/project-myuniverse.git/cadastro', body)
+            axios.post('https://project-myuniverse.herokuapp.com/cadastro', body)
                 .then(res => {
                     console.log(res.data)
                 })
                 .catch(err => {
                     alert(err)
                 })
-
-            console.log(body)
         }
 
     }
@@ -53,7 +52,7 @@ function Cadastro() {
                 <Input placeholder="Nome" type='text' onChange={(e) => { setNome(e.target.value) }} value={nome} />
                 <Input placeholder="Email" type='email' onChange={(e) => { setEmail(e.target.value) }} value={email} />
                 <Input placeholder="Senha" type='password' onChange={(e) => { setSenha(e.target.value) }} value={senha} />
-                <Input placeholder="Confirmar senha" type='password' onChange={(e) => { setConfirmacao(e.target.value) }} value={confmacao} />
+                <Input placeholder="Confirmar senha" type='password' onChange={(e) => { setConfirmacao(e.target.value) }} value={confirmacao} />
                 <button>Cadastrar</button>
             </form>
             <h2 onClick={() => navigate('/')}>Já sou cadastrado!!</h2>
