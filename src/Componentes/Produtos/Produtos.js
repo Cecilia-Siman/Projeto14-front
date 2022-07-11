@@ -169,6 +169,7 @@ function Produtos() {
 
         const promise = axios.get('https://project-myuniverse.herokuapp.com/produtos')
             .then((res) => {
+                setGalaxias(res.data)
                 console.log(res.data)
             })
             .catch(err => {
