@@ -16,7 +16,8 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 padding: 0 10px;
-border-bottom: solid 1px black;
+//border-bottom: solid 1px black;
+box-shadow: 0px 0px 6px 4px #888888;
 position: fixed;
 top: 0;
 left: 0;
@@ -27,6 +28,11 @@ box-sizing: border-box;
 h1 {
     font-family: 'Orbitron', sans-serif;
     font-weight: 500;
+}
+ion-icon {
+    font-size: 24px;
+    margin-right: 10px;
+    cursor: pointer;
 }
 `
 

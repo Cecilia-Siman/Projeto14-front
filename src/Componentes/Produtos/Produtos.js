@@ -3,10 +3,11 @@ import { FiShoppingCart } from 'react-icons/fi'
 import { AiFillHeart } from 'react-icons/ai'
 import { FaUserCircle } from 'react-icons/fa'
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom'
 
 function AdicionaGalaxia({ item, categoria, setCategoria }) {
 
-    const produtos = item.estoque
+    const produtos = item.estoque;
 
     let newprod = produtos.filter(item => {
         if (item.tipo === categoria || categoria === '') {
@@ -52,7 +53,9 @@ function AdicionaGalaxia({ item, categoria, setCategoria }) {
 
 function Produtos() {
 
-    const [categoria, setCategoria] = useState('')
+    const [categoria, setCategoria] = useState('');
+    
+    let navigate = useNavigate();
 
     const galaxias = [
         {
@@ -137,8 +140,11 @@ function Produtos() {
         <Container>
             <Cabecalho>
                 <h1>My Universe</h1>
-                <FaUserCircle size={30} cursor='pointer' />
-            </Cabecalho>
+                <div>
+                    <ion-icon name="cart" onClick={() => navigate('/carrinho')}></ion-icon>
+                    <ion-icon name="exit"></ion-icon>
+                </div>
+        </Cabecalho>
             <Menu>
                 <p onClick={() => setCategoria('Estrela')}>Estrelas</p>
                 <p onClick={() => setCategoria('Planeta')}>Planetas</p>
