@@ -23,9 +23,10 @@ export const LoadSpinner = styled.div`
 position: absolute;
 width: 100%;
 height: 100%;
+left: 0;
 display: flex;
 justify-content: center;
 align-items: center;
-background-color: #8C11BE;
-z-index: 1;
+background-color: #191970;
+z-index: 2;
 `
